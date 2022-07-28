@@ -5,7 +5,9 @@ Follow [CleanCode](https://clean-code-developer.com) guidelines
 ## Basic ideas
 - Chat via emojis (See #2)
 
-ToDo:
+## [MVP](./MVP.md)
+
+## ToDo:
 - create specification for socket connection
 - design basic architecture for everyone to follow
   - use container
