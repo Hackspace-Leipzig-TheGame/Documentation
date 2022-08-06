@@ -83,7 +83,6 @@ type: `"PARTY/REJOIN"`
 | Property | Type | Description |
 | ---      | ---  | ----        |
 | authToken    | string | JWT |
-| partyId    | string | ID of the Party to join |
 
 #### Example:
 ``` json
