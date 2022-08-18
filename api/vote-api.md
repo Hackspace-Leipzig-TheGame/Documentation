@@ -41,9 +41,12 @@ type: `"GAME/VOTE_FOR"`
 
 type: `"VOTE/VOTE"`
 
+`Authentication needed`
+
 | Property | Type | Description |
 | ---      | ---  | ----        |
 | voteId | string | UUID of the vote |
+| authToken | string | Auth token |
 | option | string | UUID of the option the user has voted for |
 
 #### Example:
@@ -52,6 +55,7 @@ type: `"VOTE/VOTE"`
     "id": "bff793ff-5cfe-46de-bc28-3a47f7a3ce2e",
     "type": "GAME/VOTE",
     "data": {
+        "authToken": "ey[...]",
         "voteId": "c215d541-0237-4858-af39-dd39aa685c58",
         "option": "c215d541-0237-4858-af39-dd39aa685c48"
     }
