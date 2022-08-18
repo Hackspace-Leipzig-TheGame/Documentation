@@ -9,8 +9,8 @@ type: `"GAME/STATE"`
 #### EventData
 | Property | Type | Description |
 | ---      | ---  | ----        |
-| activePlayer | string | `Optional` Username of the player whos turn it is. If the active player is `null` or `undefined` the player to start the turn must be voted (see PlayerStartVoteEvent) |
-| payerHand | Card[] | (see Card) The current Hand of the player which receives this event |
+| activePlayer | string | Username of the player whos turn it is. |
+| playerHand | Card[] | (see Card) The current Hand of the player which receives this event |
 | playersCardsCount | Map<String, Number> | Contains the number of cards each player has. This is represented in a map where the key is the username and the value is the amount of cards. |
 | stacks | Stack[] | The card stacks in the game a player can deposit cards on |
 | drawStackCardCount | number | Amount of cards left in the stack where players have to draw cards |
@@ -98,30 +98,10 @@ Also the game needs to check if the player sending the event has the current tur
 ```
 
 
-## PlayerStartVoteEvent
->  Send by a client to vote which player starts
-
-type: `"GAME/VOTE"`
-
-| Property | Type | Description |
-| ---      | ---  | ----        |
-| nominee | string | Username of the player which is voted for |
-
-#### Example:
-``` json
-{
-    "id": "bff793ff-5cfe-46de-bc28-3a47f7a3ce2e",
-    "type": "GAME/VOTE",
-    "data": {
-        "nominee": "username"
-    }
-}
-```
-
 ## RequestStateEvent
 >  Send by a client which, for whatever reason (reconnect etc ...), has lost the current game state. Triggers a resend of the GameStateEvent on the server
 
-type: `"GAME/REUQST_STATE"`
+type: `"GAME/REQUEST_STATE"`
 
 
 #### Example:
@@ -154,15 +134,14 @@ type: `"GAME/PLAYER_LOST"`
 }
 ```
 
-## PlayerWonEvent
+## WonEvent
 >  Sent if a play is not able to play any other cards and has lost the game.
 
-type: `"GAME/PLAYER_WON"`
+type: `"GAME/WON"`
 
 #### EventData
 | Property | Type | Description |
 | ---      | ---  | ----        |
-| winner | string | Username of the player who won the game |
 
 
 #### Example:
@@ -170,9 +149,7 @@ type: `"GAME/PLAYER_WON"`
 {
     "id": "bff793ff-5cfe-46de-bc28-3a47f7a3ce2e",
     "type": "GAME/PLAYER_WON",
-    "data": {
-        "loser": "winner"
-    }
+    "data": {}
 }
 ```
 

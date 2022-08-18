@@ -15,26 +15,26 @@
 - User2 joins party with `JoinPartyEvent` with partyId and a username
     - Server recvieves event and creates a JWT for the user
     - Server puts the connection into the container assicated with the party
-    - server sends `PartyJoinedEvent` to User2
+    - Server sends `PartyJoinedEvent` to User2
 - User2 recvieves `PartyJoinedEvent`
     - User2 stores JWT locally
     - User2 waits for the game to be started
-- User1 start the game with `StartGameEvent`
-    - Server creates a new GameState for the current party.
-    - A `GameStateEvent` is sent to each user containing the GameState for the specific user
-        - (The activeUser object in the `GameStateEvent` is null/undefined. This indicates the start-voting-mechanism)
+- Server sends a `PartyPlayersListEvent` event to all players in a party
 
 
-## Player Voting to start
+
+## Start a new Game for the Party
 > Continuuation of "Party creation and joining" with User1 and User2
 
-- Players recieve a `GameStateEvent` with empty activePlayer
-- User1 selects a Player to start
-    - User1 sends `PlayerStartVoteEvent` with the selected nominee
-- User2 selects a Player to start
-    - User2 sends `PlayerStartVoteEvent` with the selected nominee
-- Server recieved a `PlayerStartVoteEvent` from each user
-    - Server sends a `GameStateEvent` where the user with the most votes is the "activePlayer"
+- User1 start the game with `StartGameEvent`
+    - Server creates a new GameState for the current party.
+    - Server sends a `VoteForEvent` to all Players with the Options to vote for each player
+- Players recieve a `VoteForEvent` 
+    - Player selects an options
+    - Player sends the option to the server via the `VoteEvent`
+- Server recieved a `VoteEvent` from each user
+    - Server decides which user is allowed to start or triggers a new vote (Exact mechanism TDB)
+- Server sends a `GameStateEvent` for the new Game with the voted player
 
 # Player turn
 > 

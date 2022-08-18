@@ -15,8 +15,8 @@ type: `"PARTY/CREATE_PARTY"`
 ``` json
 {
     "id": "c215d541-0237-4858-af39-dd39aa685c48",
+    "type": "PARTY/CREATE_PARTY",
     "data": {
-        "type": "PARTY/CREATE_PARTY",
         "owner": "username"
     }
 }
@@ -99,7 +99,7 @@ type: `"PARTY/REJOIN"`
 ## PartyJoinedEvent
 >  Server response when a party is successfully joined. `Only gets send to the user who requested to join/rejoin a party`
 
-type: `"PARTY/PARTY_CREATED"`
+type: `"PARTY/PARTY_JOINED"`
 
 #### EventData
 | Property | Type | Description |
@@ -111,11 +111,58 @@ type: `"PARTY/PARTY_CREATED"`
 ``` json
 {
     "id": "bff793ff-5cfe-46de-bc28-3a47f7a3ce2e",
-    "type": "PARTY/PARTY_CREATED",
+    "type": "PARTY/PARTY_JOINED",
     "data": {
         "responseTo": "c215d541-0237-4858-af39-dd39aa685c48",
         "partyId": "BeEf",
         "authToken" : "ey[...]"
+    }
+}
+```
+
+## LeavePartyEvent
+>  Event used to leave a party
+
+`Authentication needed`
+
+type: `"PARTY/LEAVE"`
+
+#### EventData
+| Property | Type | Description |
+| ---      | ---  | ----        |
+| authToken    | string | Auth Token |
+
+#### Example:
+``` json
+{
+    "id": "c215d541-0237-4858-af39-dd39aa685c48",
+    "type": "PARTY/LEAVE",
+    "data": {
+        "authToken": "ey[...]"
+    }
+}
+```
+
+## PartyPlayersListEvent
+>  Send to each player to update the information of which players are in the lobby.
+
+type: `"PARTY/PARTY_LIST"`
+
+#### EventData
+| Property | Type | Description |
+| ---      | ---  | ----        |
+| players | string[] | Username of the player which joined the party |
+
+#### Example:
+``` json
+{
+    "id": "bff793ff-5cfe-46de-bc28-3a47f7a3ce2e",
+    "type": "PARTY/PARTY_LIST",
+    "data": {
+        "players": [
+            "user1",
+            "user2",
+        ]
     }
 }
 ```
