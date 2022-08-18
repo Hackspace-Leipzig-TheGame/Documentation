@@ -90,8 +90,7 @@ type: `"PARTY/REJOIN"`
     "id": "bff793ff-5cfe-46de-bc28-3a47f7a3ce2e",
     "type": "PARTY/REJOIN",
     "data": {
-        "authToken": "ey[...]",
-        "partyId": "BeEf"
+        "authToken": "ey[...]"
     }
 }
 ```

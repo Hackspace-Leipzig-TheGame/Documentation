@@ -2,7 +2,7 @@
 > [Back](../specification.md)
 
 
-## Sent Message Event
+## Send Message Event
 >  An event sent from the user to the server to send a message
 
 `Authentication needed`
@@ -20,7 +20,7 @@ type: `"CHAT/SEND_MESSAGE"`
 ``` json
 {
     "id": "bff793ff-5cfe-46de-bc28-3a47f7a3ce2e",
-    "type": "GAME/PLAY",
+    "type": "CHAT/SEND_MESSAGE",
     "data": {
         "authToken" : "ey[...]",
         "message": "Hi there"
